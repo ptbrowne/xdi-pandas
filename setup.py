@@ -12,13 +12,13 @@ with open('LICENSE') as f:
     license = f.read()
 
 setup(
-    name='sample',
+    name='xdi-pandas',
     version='0.1.0',
-    description='Sample package for Python-Guide.org',
+    description='Read XDI files to Pandas dataframe',
     long_description=readme,
-    author='Kenneth Reitz',
-    author_email='me@kennethreitz.com',
-    url='https://github.com/kennethreitz/samplemod',
+    author='Patrick Browne',
+    author_email='pt.browne@gmail.com',
+    url='https://github.com/ptbrowne/xdi-pandas',
     license=license,
     packages=find_packages(exclude=('tests', 'docs'))
 )
