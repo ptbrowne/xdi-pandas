@@ -12,7 +12,7 @@ with open('LICENSE') as f:
     license = f.read()
 
 repository = 'https://github.com/ptbrowne/xdi-pandas'
-version = '0.1.1'
+version = '0.1.2'
 setup(
     name='xdi-pandas',
     version=version,
