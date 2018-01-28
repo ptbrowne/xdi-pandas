@@ -12,7 +12,7 @@ with open('LICENSE') as f:
     license = f.read()
 
 repository = 'https://github.com/ptbrowne/xdi-pandas'
-version = '0.1.0'
+version = '0.1.1'
 setup(
     name='xdi-pandas',
     version=version,
@@ -23,6 +23,7 @@ setup(
     url=repository,
     download_url='%s/archive/%s.tar.gz' % (repository, version),
     license=license,
-    packages=find_packages(exclude=('tests', 'docs'))
+    packages=find_packages(exclude=('tests', 'docs')),
+    install_requires=['pandas']
 )
 
