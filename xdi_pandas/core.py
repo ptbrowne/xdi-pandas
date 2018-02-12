@@ -44,7 +44,10 @@ def parse_metadata(filename):
                 continue
 
             if i == 0:
-                metadata['Version'] = tuple(l.strip().split(' ')[1:])
+                if 'XDI' not in l:
+                    raise ValueError('No XDI version in the first line')
+                else:
+                    metadata['Version'] = tuple(l.strip().split(' ')[1:])
             elif comments:
                 metadata['Comments'].append(l[2:-1])
                 continue

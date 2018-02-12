@@ -27,7 +27,7 @@ N N1 N2 N3 N4 N5 N6 N7 O  O1 O2 O3 O4 O5 O6 O7
 
 def maybe(type):
     def validator(value):
-        if value == 'None':
+        if value.lower() == 'none':
             return None
         else:
             return type(value)
