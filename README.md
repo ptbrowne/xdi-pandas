@@ -1,8 +1,7 @@
 # XDI Pandas
 
-This modules lets you easily parse <a
-href="https://github.com/XraySpectroscopy/XAS-Data-Interchange">XDI</a> files
-generated into Pandas dataframes. It supports several Athena extension fields.
+This modules lets you parse <a href="https://github.com/XraySpectroscopy/XAS-
+Data-Interchange">XDI</a> files into Pandas dataframes.
 
 
 ```python
@@ -18,11 +17,14 @@ df2 = parse('file2.lcf')
 ```
 ### Fields
 
+XDI Pandas being developed primarily to help generate in batch graphs for
+Athena generated files, it supports several Athena extension fields.
+
 Fields are defined and validated in [./xdi-pandas/xdi_types.py] following <a
 href="https://github.com/XraySpectroscopy/XAS-Data-
 Interchange/blob/master/specification/dictionary.md">the spec</a>.
 
-Supported fields :
+List of supported fields :
 
 ```bash
 $ python -c 'from xdi_pandas.xdi_types import xdi_fields; print("\n".join(xdi_fields.keys()))'
