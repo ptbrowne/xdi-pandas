@@ -1,0 +1,41 @@
+XDI Pandas
+========================
+
+This modules lets you easily parse [XDI][1] files generated into Pandas dataframes. It supports several Athena extension fields.
+
+```python
+from xdi_pandas import parse
+
+df = parse('file.chir')
+print(df.metadata)
+print(df.metadata['Version'])
+print(df.metadata['Element']['symbol'])
+print(df['fit'])
+print(df['residual'])
+df2 = parse('file2.lcf')
+```
+
+### Fields
+
+Fields are defined and validated in [./xdi-pandas/xdi_types.py] following
+[the spec][3].
+
+Supported fields :
+
+```execbash
+python -c 'from xdi_pandas.xdi_types import xdi_fields; print("\n".join(xdi_fields.keys()))'
+```
+
+### Tests
+
+`nosetest` is used for the tests.
+
+`make test` will run the tests
+
+### Repository structure
+
+Thanks to Kenneth Reitz for is super useful [python module directory structure][2].
+
+[1]: https://github.com/XraySpectroscopy/XAS-Data-Interchange
+[2]: https://www.kennethreitz.org/essays/repository-structure-and-python
+[3]: https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/dictionary.md

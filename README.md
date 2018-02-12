@@ -9,9 +9,14 @@ generated into Pandas dataframes. It supports several Athena extension fields.
 from xdi_pandas import parse
 
 df = parse('file.chir')
+print(df.metadata)
+print(df.metadata['Version'])
+print(df.metadata['Element']['symbol'])
+print(df['fit'])
+print(df['residual'])
 df2 = parse('file2.lcf')
 ```
-### XDI Fields
+### Fields
 
 Fields are defined and validated in [./xdi-pandas/xdi_types.py] following <a
 href="https://github.com/XraySpectroscopy/XAS-Data-
