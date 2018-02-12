@@ -69,18 +69,28 @@ def tuple_validator(*types):
             raise ValueError('Could not convert %r to tuple(%r)' % (v, types))
     return validator
 
+
 energy = tuple_validator(float, one_of(['ev', 'gm'], 'energy'))
 current = tuple_validator(float, one_of(['a'], 'current'))
-
-
+temperature = tuple_validator(float, one_of(['k', 'c'], 'temperature'))
 two_tuple_float = tuple_validator(float, float)
 
+
 xdi_fields = {
+    'Beamline.collimation': str,
+    'Beamline.focusing': str,
+    'Beamline.harmonic_rejection': str,
+    'Beamline.name': str,
+    'Detector.i0': str,
+    'Detector.it': str,
+    'Detector.if': str,
+    'Detector.ir': str,
     'Element.edge': one_of(allowed_edges, 'edge'),
     'Element.symbol': one_of(allowed_symbols, 'chemical symbol'),
     'Element.reference': one_of(allowed_symbols, 'chemical symbol'),
     'Element.ref_edge': one_of(allowed_edges, 'edge'),
     'Mono.d_spacing': float,
+    'Mono.name': str,
     'Facility.current': current,
     'Facility.energy': energy,
     'Athena.bkg_kweight': float,
@@ -109,5 +119,11 @@ xdi_fields = {
     'Athena.y_offset': float,
     'Scan.start_time': isotime,
     'Scan.end_time': isotime,
-    'Scan.edge_energy': energy
+    'Scan.edge_energy': energy,
+    'Sample.name': str,
+    'Sample.id': str,
+    'Sample.stoichiometry': str,
+    'Sample.prep': str,
+    'Sample.experimenters': str,
+    'Sample.temperature': temperature
 }
