@@ -1,7 +1,7 @@
 XDI Pandas
 ========================
 
-This modules lets you easily parse XDI files generated
+This modules lets you easily parse [XDI][1] files generated
 by Athena and other software into Pandas dataframes.
 
 ```python
@@ -21,5 +21,7 @@ Running tests
 Repository structure
 ====================
 
-Thanks to Kenneth Reitz for is super useful [python module
-directory structure](https://www.kennethreitz.org/essays/repository-structure-and-python)
+Thanks to Kenneth Reitz for is super useful [python module directory structure][2].
+
+[1] : https://github.com/XraySpectroscopy/XAS-Data-Interchange
+[2] : https://www.kennethreitz.org/essays/repository-structure-and-python
