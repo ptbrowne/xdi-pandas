@@ -78,6 +78,8 @@ two_tuple_float = tuple_validator(float, float)
 xdi_fields = {
     'Element.edge': one_of(allowed_edges, 'edge'),
     'Element.symbol': one_of(allowed_symbols, 'chemical symbol'),
+    'Element.reference': one_of(allowed_symbols, 'chemical symbol'),
+    'Element.ref_edge': one_of(allowed_edges, 'edge'),
     'Mono.d_spacing': float,
     'Facility.current': current,
     'Facility.energy': energy,
