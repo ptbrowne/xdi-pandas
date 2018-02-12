@@ -1,7 +1,7 @@
 XDI Pandas
 ========================
 
-This modules lets you parse [XDI][1] files into Pandas dataframes.
+This module lets you parse [XDI][1] files into [Pandas][4] dataframes.
 
 ```python
 from xdi_pandas import parse
@@ -17,8 +17,9 @@ df2 = parse('file2.lcf')
 
 ### Fields
 
-XDI Pandas being developed primarily to help generate in batch graphs for
-Athena generated files, it supports several Athena extension fields.
+XDI Pandas being developed primarily to help generate graphs for
+Athena generated files in batch, it supports several Athena extension
+fields.
 
 Fields are defined and validated in [./xdi-pandas/xdi_types.py] following
 [the spec][3].
@@ -42,3 +43,4 @@ Thanks to Kenneth Reitz for is super useful [python module directory structure][
 [1]: https://github.com/XraySpectroscopy/XAS-Data-Interchange
 [2]: https://www.kennethreitz.org/essays/repository-structure-and-python
 [3]: https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/dictionary.md
+[4]: https://pandas.pydata.org/
