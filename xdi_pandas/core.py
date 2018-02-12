@@ -54,7 +54,7 @@ def parse_metadata(filename):
             else:
                 splitted = re.split(metadata_sep, l, maxsplit=2)
                 if len(splitted) < 2:
-                    continue
+                    raise ValueError('Bad field: "%s" is not in  `Key: Value` form.' % l)
                 path, value = splitted
                 path = path[2:]
                 value = parse_metadata_value(path, value.strip())
