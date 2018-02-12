@@ -26,6 +26,6 @@ Fields are defined and validated in `./xdi-pandas/xdi_types.py` following
 
 Thanks to Kenneth Reitz for is super useful [python module directory structure][2].
 
-[1] : https://github.com/XraySpectroscopy/XAS-Data-Interchange
-[2] : https://www.kennethreitz.org/essays/repository-structure-and-python
-[3] : https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/dictionary.md
+[1]: https://github.com/XraySpectroscopy/XAS-Data-Interchange
+[2]: https://www.kennethreitz.org/essays/repository-structure-and-python
+[3]: https://github.com/XraySpectroscopy/XAS-Data-Interchange/blob/master/specification/dictionary.md
