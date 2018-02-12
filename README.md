@@ -13,7 +13,7 @@ df2 = parse('file2.lcf')
 
 ### XDI Fields
 
-Fields are defined and validated in `./xdi-pandas/xdi_types.py` following
+Fields are defined and validated in [./xdi-pandas/xdi_types.py] following
 [the spec][3].
 
 ### Running tests
