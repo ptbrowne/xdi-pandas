@@ -27,8 +27,12 @@ def parse_metadata_value(path, v):
     if path.startswith('Column.'):
         return v
     else:
-        validator = xdi_fields.get(path, str)
-        return validator(v)
+        try:
+            validator = xdi_fields.get(path, str)
+            return validator(v)
+        except ValueError as e:
+            e.args = ('Could not parse %s as %s' % (v, validator), ) + e.args
+            raise e
 
 
 def parse_metadata(filename):
@@ -69,7 +73,7 @@ def parse(filename):
         for k in sorted(map(int, metadata['Column'].keys()))
     ]
 
-    data = pd.read_csv(
+    df = pd.read_csv(
         filename,
         comment='#',
         sep='\s+',
@@ -77,4 +81,5 @@ def parse(filename):
         names=columns,
         float_precision='round_trip'
     )
-    return data
+    df.metadata = metadata
+    return df

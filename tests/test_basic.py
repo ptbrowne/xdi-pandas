@@ -3,6 +3,8 @@
 from .context import xdi_pandas
 
 import unittest
+from datetime import datetime
+
 
 class BasicTestSuite(unittest.TestCase):
 
@@ -48,6 +50,7 @@ class BasicTestSuite(unittest.TestCase):
 
         assert metadata['Comments'][0] == 'LCF fit of Zn_Clos_dig_sol_fame+SSRL as chi(k) from 2.5 to 10.6'
         assert metadata['Comments'][-1] == '.         sum ........... 1.032'
+        assert metadata['Scan']['start_time'] == datetime(2018, 2, 14, 14, 0)
 
     def test_values(self):
         df = xdi_pandas.parse('./tests/data/Agri1_dig_sol_3refs_sc1.lcf')

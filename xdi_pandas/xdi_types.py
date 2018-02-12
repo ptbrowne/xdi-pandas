@@ -1,5 +1,6 @@
+import functools
 import dateutil.parser
-
+from .fn_utils import withrepr
 
 def parse_enum(enum):
     return set(
@@ -48,27 +49,28 @@ def human_bool(v):
 
 
 def one_of(list, name):
+    @withrepr(lambda x: 'One of %s' % list)
     def validator(v):
         if v.lower() in list:
             return v
         else:
             raise ValueError('%s is not a valid %s.' % (v, name))
+    validator.__repr__ = lambda x: 'oto'
     return validator
 
 
 def tuple_validator(*types):
+    @withrepr(lambda x: 'Tuple (%s)' % ', '.join(['%r' % r for r in types]))
     def validator(v):
         try:
             values = v.split(' ')
             return tuple([types[i](values[i]) for i, v in enumerate(types)])
         except (KeyError, ValueError) as e:
-            raise ValueError('Could not convert %s to tuple(%s)' % (v, types))
+            raise ValueError('Could not convert %r to tuple(%r)' % (v, types))
     return validator
 
-
-unit = str
-def with_units(type):
-    return tuple_validator(type, unit)
+energy = tuple_validator(float, one_of(['ev', 'gm'], 'energy'))
+current = tuple_validator(float, one_of(['a'], 'current'))
 
 
 two_tuple_float = tuple_validator(float, float)
@@ -77,6 +79,8 @@ xdi_fields = {
     'Element.edge': one_of(allowed_edges, 'edge'),
     'Element.symbol': one_of(allowed_symbols, 'chemical symbol'),
     'Mono.d_spacing': float,
+    'Facility.current': current,
+    'Facility.energy': energy,
     'Athena.bkg_kweight': float,
     'Athena.clamps': two_tuple_float,
     'Athena.dk': float,
@@ -103,5 +107,5 @@ xdi_fields = {
     'Athena.y_offset': float,
     'Scan.start_time': isotime,
     'Scan.end_time': isotime,
-    'Scan.edge_energy': with_units(float)
+    'Scan.edge_energy': energy
 }

@@ -1,6 +1,8 @@
 # XDI/1.0 Athena/0.9.26
 # Element.edge:                  K
 # Element.symbol:                Zn
+# Facility.current:              1.5 a
+# Facility.energy:               20 gm
 # Column.1:                      wavelength inverse Angstrom
 # Column.2:                      data
 # Column.3:                      fit
@@ -33,6 +35,7 @@
 # Athena.window:                 hanning
 # Athena.plot_multiplier:        1
 # Athena.y_offset:               0
+# Scan.start_time:               2018-02-14T14:00:00
 # ///
 # LCF fit of Zn_Clos_dig_sol_fame+SSRL as chi(k) from 2.5 to 10.6
 # Fit included 162 data points and 3 variables, and approximately 16.470 measurements
