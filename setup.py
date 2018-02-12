@@ -12,11 +12,11 @@ with open('LICENSE') as f:
     license = f.read()
 
 repository = 'https://github.com/ptbrowne/xdi-pandas'
-version = '0.1.2'
+version = '0.2.0'
 setup(
     name='xdi-pandas',
     version=version,
-    description='Read XDI files to Pandas dataframe',
+    description='Read XDI files to Pandas dataframes',
     long_description=readme,
     author='Patrick Browne',
     author_email='pt.browne@gmail.com',
