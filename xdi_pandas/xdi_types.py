@@ -35,6 +35,7 @@ def maybe(type):
     return validator
 
 
+@withrepr(lambda x: 'Valid ISO8601 datetime.')
 def isotime(v):
     return dateutil.parser.parse(v)
 
@@ -49,7 +50,7 @@ def human_bool(v):
 
 
 def one_of(list, name):
-    @withrepr(lambda x: 'One of %s' % list)
+    @withrepr(lambda x: '%s' % name)
     def validator(v):
         if v.lower() in list:
             return v
@@ -60,19 +61,31 @@ def one_of(list, name):
 
 
 def tuple_validator(*types):
-    @withrepr(lambda x: 'Tuple (%s)' % ', '.join(['%r' % r for r in types]))
+    @withrepr(lambda x: 'tuple{%s}' % ', '.join(['%r' % r for r in types]))
     def validator(v):
         try:
             values = v.split(' ')
             return tuple([types[i](values[i]) for i, v in enumerate(types)])
-        except (KeyError, ValueError) as e:
+        except (ValueError, IndexError) as e:
             raise ValueError('Could not convert %r to tuple(%r)' % (v, types))
     return validator
 
 
-energy = tuple_validator(float, one_of(['ev', 'gm'], 'energy'))
-current = tuple_validator(float, one_of(['a'], 'current'))
-temperature = tuple_validator(float, one_of(['k', 'c'], 'temperature'))
+def any_of(*types):
+    @withrepr(lambda x: '<any of [%s]>' % ', '.join('%r' % type for type in types))
+    def validator(v):
+        for type in types:
+            try:
+                res = type(v)
+                return res
+            except ValueError:
+                pass
+        raise ValueError('Could not convert %s to any of %s' % (v, types))
+    return validator
+
+energy = any_of(tuple_validator(float, one_of(['ev', 'gev', 'gm'], "<class 'energy'>")), float)
+current = tuple_validator(float, one_of(['a'], "<class 'current'>"))
+temperature = tuple_validator(float, one_of(['k', 'c'], "<class 'temperature'>"))
 two_tuple_float = tuple_validator(float, float)
 
 
